@@ -1,0 +1,31 @@
+title: REScala
+email: salvaneschi@st.informatik.tu-darmstadt.de
+description: >- # this means to ignore newlines until "baseurl:"
+  REScala is a Scala library for functional reactive programming on the JVM and the Web. It provides a rich API for event stream transformations and signal composition with managed consistent up-to-date state and minimal syntactic overhead.
+baseurl: ""
+url: ""
+twitter_username: #
+github_username: rescala-lang
+
+# Build settings
+markdown: kramdown
+
+plugins:
+  - jekyll-feed
+  - jekyll-paginate-v2
+
+collections:
+  publications:
+    output: false
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/

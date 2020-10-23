@@ -1,0 +1,130 @@
+---
+layout: internal
+---
+
+<!-- Page Header Section -->
+<div class="container-fluid background-indigo-500">
+    <div class="container py-5">
+        <h3 class="text-white">Publications</h3>
+    </div>
+</div>
+<div class="container-fluid py-2 background-indigo-100"></div>
+
+<!-- Publications List Section -->
+<div class="container-fluid">
+    <div class="container py-3">
+        <div class="row justify-content-between py-2">
+
+            <div class="col-6 col-lg-6 py-2">
+                <div class="row no-gutters align-items-center pb-5">
+                    <div id="publication-filter">
+                        {% for publication in site.publications %}
+                        {% assign type = publication.type | split: ", " %}
+                        {% assign types = types | concat: type %}
+                        {% endfor %}
+                        <button class="button-filter active mr-3 mb-2 mb-sm-1"
+                            onclick="changeType('all_types')">All</button>
+                        {% if types contains 'book' %}
+                        <button class="button-filter mr-3 mb-2 mb-sm-1" onclick="changeType('book')">Book</button>
+                        {% endif %}
+                        {% if types contains 'conference_item' %}
+                        <button class="button-filter mr-3 mb-2 mb-sm-1"
+                            onclick="changeType('conference_item')">Conference</button>
+                        {% endif %}
+                        {% if types contains 'article' %}
+                        <button class="button-filter mr-3 mb-2 mb-sm-1" onclick="changeType('article')">Article</button>
+                        {% endif %}
+                        {% if types contains 'thesis' %}
+                        <button class="button-filter mr-3 mb-0" onclick="changeType('thesis')">Thesis</button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-6 py-2">
+
+                <div class="row no-gutters align-items-center">
+                    <div id="date-filter">
+                        <button class="button-filter mr-3 mb-2 mb-sm-1 mb-0" onclick="order_asc()">Latest</button>
+                    </div>
+                </div>
+
+                <div class="row no-gutters align-items-center">
+                    <div id="date-filter">
+                        <button class="button-filter mr-3 mb-2 mb-sm-1 mb-0" onclick="order_asc()">Alphabetical</button>
+                    </div>
+                </div>
+
+                <div class="row no-gutters align-items-center pb-5">
+                    <div id="year-filter">
+                        <button class="button-filter filtered mr-3 mb-2 mb-sm-1"
+                            onclick="changeYear('year-all')">All</button>
+                        {% assign years = "2020" | split: ", " %}
+                        {% for publication in site.publications %}
+                        {% assign year = publication.date | date: "%Y" | split: ", " %}
+                        {% assign years = years | concat: year %}
+                        {% endfor %}
+                        {% assign years = years | uniq | sort | reverse %}
+                        {% for year in years %}
+                        <button class="button-filter mr-3 mb-2 mb-sm-1"
+                            onclick="changeYear('year-{{ year }}')">{{ year }}</button>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="publications-container" class="row d-flex py-2">
+            {% assign publications = site.publications | sort: 'date' | reverse %}
+            {% for publication in publications  %}
+            <div class="col-lg-6 col-sm-12">
+                <article data-event-date="{{ publication.date }}">
+                    <div
+                        class="publication-card my-2 publications year-all all_types {{ publication.type }} year-{{ publication.date | date: '%Y' }}">
+                        <div class="row justify-content-between align-items-center">
+                            <div class="col-lg-12 col-sm-12">
+                                <p class="date mb-1">
+                                    <i class="far fa-clock mr-1"></i>{{ publication.date | date: "%B %Y" }}
+                                </p>
+                                <a href="{{ publication.link }}" target="_blank" rel="noopener">
+                                    <h3 class="title">
+                                        {{ publication.title }}
+                                    </h3>
+                                </a>
+                                <details class="abstract">
+                                    <summary>
+                                        Abstract
+                                    </summary>
+                                    <div class="mt-1">{{ publication.abstract }}</div>
+                                </details>
+                                {% for collaborator in publication.collaborators %}
+                                <span class="collaborator">
+                                    {{ collaborator }}{% if forloop.last %}{% else %},{% endif %}
+                                </span>
+                                {% endfor %}
+                                <p class="size-14 my-2">
+                                    {% if publication.pdf %}
+                                    <a href="{{ publication.pdf }}" class="pdf" target="_blank" rel="noopener">
+                                        <i class="fas fa-file-pdf"></i>
+                                        <span>PDF</span>
+                                    </a>
+                                    {% endif %}
+                                    {% if publication.slides %}
+                                    <a href="{{ publication.slides }}" class="pdf" target="_blank" rel="noopener">
+                                        <i class="fas fa-video"></i>
+                                        <span>Slides</span>
+                                    </a>
+                                    {% endif %}
+                                    {% if publication.event %}
+                                    <span class="pill">{{ publication.event }}</span>
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
