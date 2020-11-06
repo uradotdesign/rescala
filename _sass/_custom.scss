@@ -697,7 +697,7 @@ button {
 
   & li {
     list-style-position: outside;
-    margin: 0 0 20px 20px;
+    margin: 0 0 20px 0px;
     font-size: 14px;
   }
 
@@ -832,9 +832,9 @@ button {
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 992px) {
   .background-manual {
-    background: $indigo-700;
+    background: $white;
   }
 }
 
