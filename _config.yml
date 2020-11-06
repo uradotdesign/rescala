@@ -2,8 +2,8 @@ title: REScala
 email: salvaneschi@st.informatik.tu-darmstadt.de
 description: >- # this means to ignore newlines until "baseurl:"
   REScala is a Scala library for functional reactive programming on the JVM and the Web. It provides a rich API for event stream transformations and signal composition with managed consistent up-to-date state and minimal syntactic overhead.
-baseurl: ""
-url: ""
+baseurl: "/rescala"
+url: "https://uracreative.github.io"
 twitter_username: #
 github_username: rescala-lang
 
@@ -11,10 +11,10 @@ github_username: rescala-lang
 markdown: kramdown
 kramdown:
   input: GFM
-  parse_html: true 
+  parse_html: true
   syntax_highlighter: rouge
   syntax_highlighter_opts:
-    css_class: 'highlight'
+    css_class: "highlight"
     span:
       line_numbers: false
     block:
