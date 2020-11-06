@@ -1,94 +1,115 @@
 ---
 layout: internal
+title: Publications
 ---
 
 <!-- Page Header Section -->
-<div class="container-fluid background-indigo-500">
+<div class="container-fluid d-lg-block d-none background-indigo-500">
     <div class="container py-5">
         <h3 class="text-white">Publications</h3>
     </div>
 </div>
-<div class="container-fluid py-2 background-indigo-100"></div>
+<div class="container-fluid d-lg-block d-none py-2 background-indigo-100"></div>
+
+<div class="container-fluid d-lg-none d-block background-indigo-100">
+    <div class="container py-4">
+        <h3 class="color-indigo-900">Publications</h3>
+    </div>
+</div>
 
 <!-- Publications List Section -->
 <div class="container-fluid">
     <div class="container py-3">
         <div class="row justify-content-between py-2">
 
-            <div class="col-6 col-lg-6 py-2">
-                <div class="row no-gutters align-items-center pb-5">
+            <div class="col-12 col-lg-6 py-2">
                     <div id="publication-filter">
-                        {% for publication in site.publications %}
-                        {% assign type = publication.type | split: ", " %}
-                        {% assign types = types | concat: type %}
-                        {% endfor %}
-                        <button class="button-filter active mr-3 mb-2 mb-sm-1"
-                            onclick="changeType('all_types')">All</button>
-                        {% if types contains 'book' %}
-                        <button class="button-filter mr-3 mb-2 mb-sm-1" onclick="changeType('book')">Book</button>
-                        {% endif %}
-                        {% if types contains 'conference_item' %}
-                        <button class="button-filter mr-3 mb-2 mb-sm-1"
-                            onclick="changeType('conference_item')">Conference</button>
-                        {% endif %}
-                        {% if types contains 'article' %}
-                        <button class="button-filter mr-3 mb-2 mb-sm-1" onclick="changeType('article')">Article</button>
-                        {% endif %}
-                        {% if types contains 'thesis' %}
-                        <button class="button-filter mr-3 mb-0" onclick="changeType('thesis')">Thesis</button>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-6 py-2">
 
-                <div class="row no-gutters align-items-center">
+                        <div class="dropdown">
+                            <button class="nav-link dropdown-toggle color-indigo-900" id="categoryDropdown" role="button"
+                            data-toggle="dropdown" data-hover="dropdown">All Categories</button>
+
+                            <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+
+                                {% for publication in site.publications %}
+                                {% assign type = publication.type | split: ", " %}
+                                {% assign types = types | concat: type %}
+                                {% endfor %}
+                                <button class="dropdown-item button-filter mr-3 mb-2 mb-sm-1"
+                                    onclick="changeType('all_types')">All</button>
+                                {% if types contains 'publication' %}
+                                <button class="dropdown-item button-filter mr-3 mb-2 mb-sm-1" onclick="changeType('publication')">Publication</button>
+                                {% endif %}
+                                {% if types contains 'book' %}
+                                <button class="dropdown-item button-filter mr-3 mb-2 mb-sm-1" onclick="changeType('book')">Book</button>
+                                {% endif %}
+                                {% if types contains 'conference_item' %}
+                                <button class="dropdown-item button-filter mr-3 mb-2 mb-sm-1"
+                                    onclick="changeType('conference_item')">Conference</button>
+                                {% endif %}
+                                {% if types contains 'article' %}
+                                <button class="dropdown-item button-filter mr-3 mb-2 mb-sm-1" onclick="changeType('article')">Article</button>
+                                {% endif %}
+                                {% if types contains 'thesis' %}
+                                <button class="dropdown-item button-filter mr-3 mb-0" onclick="changeType('thesis')">Thesis</button>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="col-12 col-lg-6 py-2 d-flex justify-content-lg-end">
+                <div>
                     <div id="date-filter">
                         <button class="button-filter mr-3 mb-2 mb-sm-1 mb-0" onclick="order_asc()">Latest</button>
                     </div>
-                </div>
 
-                <div class="row no-gutters align-items-center">
-                    <div id="date-filter">
-                        <button class="button-filter mr-3 mb-2 mb-sm-1 mb-0" onclick="order_asc()">Alphabetical</button>
+                    <div id="alphabet-filter">
+                        <button class="button-filter mr-3 mb-2 mb-sm-1 mb-0" onclick="order_alph()">Alphabetical</button>
                     </div>
-                </div>
 
-                <div class="row no-gutters align-items-center pb-5">
                     <div id="year-filter">
-                        <button class="button-filter filtered mr-3 mb-2 mb-sm-1"
-                            onclick="changeYear('year-all')">All</button>
-                        {% assign years = "2020" | split: ", " %}
-                        {% for publication in site.publications %}
-                        {% assign year = publication.date | date: "%Y" | split: ", " %}
-                        {% assign years = years | concat: year %}
-                        {% endfor %}
-                        {% assign years = years | uniq | sort | reverse %}
-                        {% for year in years %}
-                        <button class="button-filter mr-3 mb-2 mb-sm-1"
-                            onclick="changeYear('year-{{ year }}')">{{ year }}</button>
-                        {% endfor %}
+                        <div class="dropdown">
+                            <button class="nav-link dropdown-toggle color-indigo-900" id="yearDropdown" role="button"
+                            data-toggle="dropdown" data-hover="dropdown">By year</button>
+
+                            <div class="dropdown-menu" aria-labelledby="yearDropdown">
+
+                                <button class="dropdown-item button-filter filtered" onclick="changeYear('year-all')">All</button>
+
+                            {% assign years = "2020" | split: ", " %}
+                            {% for publication in site.publications %}
+                            {% assign year = publication.date | date: "%Y" | split: ", " %}
+                            {% assign years = years | concat: year %}
+                            {% endfor %}
+                            {% assign years = years | uniq | sort %}
+                            {% for year in years %}
+
+                            <button class="dropdown-item button-filter" onclick="changeYear('year-{{ year }}')">{{ year }}</button>
+                            {% endfor %}
+
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
 
             </div>
         </div>
 
-        <div id="publications-container" class="row d-flex py-2">
+        <div id="publications-container" class="row py-2">
             {% assign publications = site.publications | sort: 'date' | reverse %}
             {% for publication in publications  %}
             <div class="col-lg-6 col-sm-12">
                 <article data-event-date="{{ publication.date }}">
-                    <div
-                        class="publication-card my-2 publications year-all all_types {{ publication.type }} year-{{ publication.date | date: '%Y' }}">
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-lg-12 col-sm-12">
+                    <div class="publication-card my-2 publications year-all all_types {{ publication.type }} year-{{ publication.date | date: '%Y' }}">
                                 <p class="date mb-1">
                                     <i class="far fa-clock mr-1"></i>{{ publication.date | date: "%B %Y" }}
                                 </p>
                                 <a href="{{ publication.link }}" target="_blank" rel="noopener">
                                     <h3 class="title">
-                                        {{ publication.title }}
+                                        {{ publication.name }}
                                     </h3>
                                 </a>
                                 <details class="abstract">
@@ -119,8 +140,6 @@ layout: internal
                                     <span class="pill">{{ publication.event }}</span>
                                     {% endif %}
                                 </p>
-                            </div>
-                        </div>
                     </div>
                 </article>
             </div>
@@ -128,3 +147,126 @@ layout: internal
         </div>
     </div>
 </div>
+
+<!-- Data filtering for publications -->
+<script>
+let currentYear = "year-all";
+let currentType = "all_types";
+    
+update();
+    
+function changeType(type) {
+    currentType = type;
+    update();
+}
+    
+function changeYear(year) {
+    currentYear = year;
+    update();
+}
+    
+function update() {
+    document
+    .querySelectorAll("#publications-container > div > article > div")
+    .forEach((item) => {
+        if (item.classList.contains(currentType)) {
+            item.classList.add('visible');
+        } else {
+            item.classList.remove('visible');
+        }
+    
+        if (!item.classList.contains(currentYear)) {
+            item.classList.remove('visible');
+        }
+    });
+    
+window.updateCards = update;
+}
+</script>
+
+<!-- Alphabetical sorting -->
+<script>
+function order_alph() {
+    
+var container = $("#publications-container");
+var items = $("article");
+    
+items.each(function() {
+       var BCDate = $(this).attr("data-event-date");
+       var standardDate = new Date(BCDate).getTime();
+       $(this).attr("data-event-date", standardDate);
+});
+    
+items.sort(function(a,b) {
+    a = parseFloat($(a).attr("data-event-date"));
+    b = parseFloat($(b).attr("data-event-date"));
+    return a>b ? -1 : a<b ? 1 : 0;
+}).each(function(){
+    container.prepend(this);
+});
+    
+}
+</script>
+        
+<!-- Order filtering -->
+<script>
+    function order_asc() {
+    
+    var container = $("#publications-container");
+    var items = $("article");
+    
+    items.each(function() {
+       var BCDate = $(this).attr("data-event-date");
+       var standardDate = new Date(BCDate).getTime();
+       $(this).attr("data-event-date", standardDate);
+    });
+    
+    items.sort(function(a,b) {
+        a = parseFloat($(a).attr("data-event-date"));
+        b = parseFloat($(b).attr("data-event-date"));
+        return a>b ? -1 : a<b ? 1 : 0;
+    }).each(function(){
+        container.prepend(this);
+    });
+    
+    }
+</script>
+
+<script>
+    // Function to add selected class to the selected type filter
+      var btnContainer = document.getElementById("publication-filter");
+      var btns = btnContainer.getElementsByClassName("button-filter");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+          var current = document.getElementsByClassName("active");
+          current[0].className = current[0].className.replace(" active", "");
+          this.className += " active";
+        });
+      }
+</script>
+
+<script>
+    // Function to add selected class to the selected year filter
+    var yearContainer = document.getElementById("year-filter");
+    var years = yearContainer.getElementsByClassName("button-filter");
+    for (var j = 0; j < years.length; j++) {
+      years[j].addEventListener("click", function() {
+        var currentYear = document.getElementsByClassName(" filtered");
+        currentYear[0].className = currentYear[0].className.replace(" filtered", "");
+        this.className += " filtered";
+      });
+    }
+</script>
+
+<script>
+    // Function to add selected class to the order filter
+    var sortContainer = document.getElementById("date-filter");
+    var sorts = sortContainer.getElementsByClassName("button-filter");
+    for (var j = 0; j < sorts.length; j++) {
+      sorts[j].addEventListener("click", function() {
+        var currentOrder = document.getElementsByClassName(" selected");
+        currentOrder[0].className = currentOrder[0].className.replace(" selected", "");
+        this.className += " selected";
+      });
+    }
+</script>
