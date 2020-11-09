@@ -3,19 +3,19 @@ title: Manual
 layout: manual
 ---
 
-<div class="container-fluid background-manual">
+<div class="container-fluid">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-6 col-12 pt-3 pb-5">
+			<div class="col-lg-4 col-12 background-manual pt-3 pb-5">
 				<div class="sticky-top pt-5">
 					<div id="toc-container">
-						<h2 id="toc-title">Table of Contents</h2>
+						<h3 id="toc-title">Table of Contents</h3>
 						<ol id="toc" class="list-group">
 						</ol>
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-6 col-12 py-3 pl-lg-5 pl-3 md-content">
+			<div class="col-lg-8 col-12 py-3 pl-lg-5 pl-3 md-content">
 				<div id="md-manual" class="pt-5">
 					{% capture markdown %}{% include_relative content.md %}{% endcapture %}
 					{{ markdown | markdownify }}
@@ -41,7 +41,7 @@ layout: manual
 		return document.querySelector(s);
 	}
 
-	// wait for html to finish loading, as we need document.body
+	// wait for HTML to finish loading, as we need document.body
 	window.onload = function () {
 
 		var toc = query("#toc");
@@ -50,7 +50,7 @@ layout: manual
 			var currentDepth = 1;
 
 			var numbering = [0, 0, 0, 0, 0];
-			var headlines = queryAll("#md-manual>h1, #md-manual>h2, #md-manual>h3, #md-manual>h4");
+			var headlines = queryAll("#md-manual>h1, #md-manual>h2, #md-manual>h3, #md-manual>h4, #md-manual>h5, #md-manual>h6");
 			headlines.forEach((headline, i) => {
 				var depth = parseInt(headline.nodeName[1]); // 1, 2, 3, 4
 				++numbering[depth];
@@ -75,5 +75,7 @@ layout: manual
 							{ open: false }));
 			});
 		}
+		var firstItem = document.getElementsByTagName("details").item(0);
+		firstItem.open = true;
 	};
 </script>

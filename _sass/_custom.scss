@@ -340,7 +340,7 @@ a {
   }
 
   .hero-header {
-    font-size: 52px;
+    font-size: 60px;
   }
 }
 
@@ -645,7 +645,7 @@ button {
 
 .md-content {
   & p {
-    font-size: 14px;
+    font-size: 16px;
     color: $gray-900;
     margin-bottom: 25px;
     line-height: 24px;
@@ -777,7 +777,7 @@ button {
 }
 #toc details > summary:hover {
   cursor: pointer;
-  background: $indigo-500;
+  background: $indigo-800;
 }
 #toc details > summary::before {
   content: "\f0fe";
@@ -810,7 +810,7 @@ button {
   }
 
   &-manual {
-    background: linear-gradient(90deg, $indigo-700 50%, $white 50%);
+    background: $indigo-700;
   }
 
   &-radial {
@@ -818,7 +818,7 @@ button {
   }
 
   &-lines {
-    background: url(/assets/images/content/header.svg);
+    background: url(../../assets/images/content/header.svg);
     background-color: rgba(255, 255, 255, 0.6);
     background-blend-mode: lighten;
     background-position: top;
@@ -873,7 +873,7 @@ button {
 }
 
 .wave-background {
-  background-image: url(/assets/images/content/waves.svg);
+  background-image: url(../../assets/images/content/waves.svg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -886,8 +886,8 @@ button {
 }
 
 .extra-items {
-  background-image: url(/assets/images/content/rectangle.png),
-    url(/assets/images/content/rectangle-2.png);
+  background-image: url(../../assets/images/content/rectangle.png),
+    url(../../assets/images/content/rectangle-2.png);
   background-position: 90% 60%, 0% 90%;
   background-repeat: no-repeat;
 }
