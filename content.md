@@ -1,5 +1,3 @@
-# REScala Manual
-
 The manual serves as an introduction of the concepts in _REScala_.
 The full API is covered in the [scaladoc](../scaladoc/rescala/index.html) especially for Signals and Events.
 More details can be found in [[7, 3]](#ref).
