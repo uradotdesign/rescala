@@ -754,24 +754,23 @@ button {
 #toc div:first-child {
   display: inline-block;
 }
-#toc > div, #toc summary {
+#toc > div, #toc summary, #toc details > div > div {
   padding: 0.3em 0;
 }
 #toc * {
   color: $white !important;
+}
+details summary::-webkit-details-marker {
+  display:none;
+}
+details > summary:first-of-type {
+  list-style-type: none;
 }
 #toc details > div {
   border: none;
 }
 #toc details > div {
   padding-left: 1em;
-}
-#toc details > div > div {
-  padding: 0.3em 0;
-}
-#toc details > div > details > div > div {
-  display: block;
-  padding: 0.3em 0;
 }
 #toc details {
   position: relative;
