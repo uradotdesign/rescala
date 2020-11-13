@@ -1,4 +1,4 @@
-# REScala Manual
+# Introduction
 
 The manual serves as an introduction of the concepts in _REScala_.
 The full API is covered in the [scaladoc](../scaladoc/rescala/index.html) especially for Signals and Events.
@@ -11,7 +11,7 @@ The manual introduces the concepts related to functional reactive programming an
 - If you encounter any problems, check out the chapter [Common Pitfalls](#common-pitfalls).
 - The readers interested in a more general presentation of these topics can find thee essential references in the section [related work](#related).
 
-## Setup
+# Setup
 
 Create a `build.sbt` file in an empty folder with the following contents:
 
@@ -34,7 +34,7 @@ To use all features of _REScala_ the only required import is:
 import rescala.default._
 ```
 
-<!--## Declarative Events-->
+<!--# Declarative Events-->
 
 <!--*REScala* supports declarative events, which are defined as a-->
 <!--composition of other events. For this purpose it offers operators like-->
@@ -94,7 +94,7 @@ import rescala.default._
 <!--a method call which supports (multiple) bodies that are registered and-->
 <!--unregistered dynamically.-->
 
-## The Basics
+# The Basics
 
 <!--Because most code is imperative,-->
 <!--you need to know the following imperative parts of *REScala* for starters,-->
@@ -102,7 +102,7 @@ import rescala.default._
 
 This chapter is about using Var and Evt, the imperative subtypes of Signal and Event.
 
-### Var, set, now
+## Var, set, now
 
 A `Var[T]` holds a value of type `T`.
 `Var[T]` is a subtype of `Signal[T]`. See also the chapter about Signals.
@@ -136,7 +136,7 @@ println(c.now)
 <!--the value of a var must not be mutated indirectly,-->
 <!--as such changes are hidden to the framework.-->
 
-### Evt, fire
+## Evt, fire
 
 Imperative events are defined by the `Evt[T]` type.
 `Evt[T]` are a subtype of `Event[T]`.
@@ -159,7 +159,7 @@ e2.fire(())
 e3.fire((false, "Hallo", 5))
 ```
 
-### Now, observe, remove
+## Now, observe, remove
 
 The current value of a signal can be accessed using the `now` method.
 It is useful for debugging and testing, and sometimes inside onclick handlers.
@@ -260,7 +260,7 @@ e.fire(10)
 handler1.remove()
 ```
 
-### Signal Expressions
+## Signal Expressions
 
 Signals are defined by the syntax `Signal{`_sigexpr_`}`, where _sigexpr_ is a side effect-free expression.
 A signal that carries integer values has the type `Signal[Int]`.
@@ -305,7 +305,7 @@ val s: Signal[Int] = Signal {
 }
 ```
 
-### Example
+## Example
 
 Now, we have introduced enough features of _REScala_ to give a simple example.
 The following example computes the displacement `space` of a particle that is moving at constant speed `SPEED`.
@@ -342,13 +342,13 @@ Instead, the approach described so far prints _all_ values of the signal.
 
 <!--More details about converting signals into events and back are provided in [Conversion Functions](#conversion-functions).-->
 
-## Common Combinators
+# Common Combinators
 
 Combinators express functional dependencies among values.
 Intuitively, the value of a combinator is computed from one or multiple input values.
 Whenever any inputs changes, the value of the combinator is also updated.
 
-### Latest, Changed
+## Latest, Changed
 
 Conversion between signals and events are fundamental to introduce
 time-changing values into OO applications -- which are usually event-based.
@@ -414,7 +414,7 @@ v.set(3)
 assert(test == 2)
 ```
 
-### Map
+## Map
 
 The reactive `r.map f` is obtained by applying `f` to the value carried by `r`.
 The map function must take the parameter as a formal parameter.
@@ -444,7 +444,7 @@ e.fire(15)
 // Here: 15
 ```
 
-### Fold
+## Fold
 
 The `fold` function creates a signal by folding events with a
 given function. Initially the signal holds the `init`
@@ -466,7 +466,7 @@ e.fire(2)
 assert(s.now == 13)
 ```
 
-### Or, And
+## Or, And
 
 The event `e_1 || e_2` is fired upon the occurrence of one among `e_1`
 or `e_2`. Note that the events that appear in the event expression
@@ -513,7 +513,7 @@ e.fire(11)
 
 {::comment}
 
-### dropParam
+## dropParam
 
 The `dropParam` operator transforms an event into an event with
 `Unit` parameter. In the following example the `dropParam`
@@ -567,9 +567,9 @@ val e1_OR_e2: Event[Unit] = e1.dropParam || e2
 
 {:/comment}
 
-## Combinators
+# Combinators
 
-### Count Signal
+## Count Signal
 
 Returns a signal that counts the occurrences of the event.
 Initially, when the event has never been fired yet, the signal holds the value 0.
@@ -590,7 +590,7 @@ e.fire(3)
 assert(s.now == 2)
 ```
 
-### Last(n) Signal
+## Last(n) Signal
 
 The `last` function generalizes the `latest` function and
 returns a signal which holds the last `n` events.
@@ -622,7 +622,7 @@ e.fire(6)
 // Queue(2, 3, 4, 5, 6)
 ```
 
-### List Signal
+## List Signal
 
 Collects the event values in a (growing) list. This function should be
 used carefully. Since the entire history of events is maintained, the
@@ -630,7 +630,7 @@ function can potentially introduce a memory overflow.
 
 `list[T](e: Event[T]): Signal[List[T]]`
 
-### LatestOption Signal
+## LatestOption Signal
 
 The `latestOption` function is a variant of the `latest`
 function which uses the `Option` type to distinguish the case in
@@ -657,7 +657,7 @@ e.fire(1)
 assert(s.now == Option(1))
 ```
 
-### Fold matcher Signal
+## Fold matcher Signal
 
 The `fold` `Match` construct allows to match on one of multiple events.
 For every firing event, the corresponding handler function is executed,
@@ -696,7 +696,7 @@ update(count -> 2, word -> "do them all!", reset -> (()))
 // do them all!do them all!
 ```
 
-### Iterate Signal
+## Iterate Signal
 
 Returns a signal holding the value computed by `f` on the
 occurrence of an event. Differently from `fold`, there is no
@@ -726,7 +726,7 @@ assert(test == 12)
 assert(s.now == 13)
 ```
 
-### Change Event
+## Change Event
 
 The `change` function is similar to `changed`, but it
 provides both the old and the new value of the signal in a tuple.
@@ -747,7 +747,7 @@ s.set(20)
 // Diff(Value(10), Value(20))
 ```
 
-### ChangedTo Event
+## ChangedTo Event
 
 The `changedTo` function is similar to `changed`, but it
 fires an event only when the signal changes its value to a given
@@ -771,7 +771,7 @@ v set(3)
 assert(test == 1)
 ```
 
-### Flatten
+## Flatten
 
 The `flatten` function is used to ``flatten'' nested reactives.
 
@@ -798,13 +798,13 @@ v3.set(false)
 // false
 ```
 
-## Common Pitfalls
+# Common Pitfalls
 
 In this section we
 collect the most common pitfalls for users that are new to reactive
 programming and _REScala_.
 
-### Accessing values in signal expressions
+## Accessing values in signal expressions
 
 The `()`
 operator used on a signal or a var, inside a signal expression,
@@ -835,14 +835,14 @@ which this behavior is desirable, using `now` inside a signal
 expression is almost certainly a mistake. As a rule of dumb, signals
 and vars appear in signal expressions with the `()` operator.
 
-### Attempting to assign a signal
+## Attempting to assign a signal
 
 Signals are not assignable.
 Signal depends on other signals and vars, the dependency is expressed by the signal expression.
 The value of the signal is automatically updated when one of the values it depends on changes.
 Any attempt to set the value of a signal manually is a mistake.
 
-### Side effects in signal expressions
+## Side effects in signal expressions
 
 Signal expressions should be pure. i.e. they should not modify external variables.
 For example the following code is conceptually wrong because the variable
@@ -879,7 +879,7 @@ println(c.now)
 // 4
 ```
 
-### Cyclic dependencies
+## Cyclic dependencies
 
 When a signal `s` is defined, a dependency is establishes with each of the
 signals or vars that appear in the signal expression of `s`.
@@ -922,7 +922,7 @@ val t = Signal{ a() + s() + 1 }
 creates a mutual dependency between `s` and
 `t`. Similarly, indirect cyclic dependencies must be avoided.
 
-### Objects and mutability
+## Objects and mutability
 
 Vars and signals may behave
 unexpectedly with mutable objects. Consider the following example.
@@ -999,7 +999,7 @@ println(s.now)
 // 11
 ```
 
-### Functions of reactive values
+## Functions of reactive values
 
 Functions that operate on
 traditional values are not automatically transformed to operate on
@@ -1048,7 +1048,7 @@ val a = Var(1)
 val s = Signal{ increment(a()) + 1 }
 ```
 
-## Essential Related Work
+# Essential Related Work
 
 {: #related }
 
@@ -1068,7 +1068,7 @@ FlapJax [[6]](#ref) (Javascript),
 AmbientTalk/R [[4]](#ref) and
 Scala.React [[5]](#ref) (Scala).
 
-## Acknowledgments
+# Acknowledgments
 
 Several people contributed to this manual,
 
@@ -1078,7 +1078,7 @@ among the others David Richter, Gerold Hintz and Pascal Weisenburger.
 
 <!--and Guido Salvaneschi of course?-->
 
-## References
+# References
 
 {: #ref}
 
