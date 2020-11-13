@@ -261,10 +261,10 @@ p {
 
 // Links
 a {
-  //color: $teal-800;
+  color: $indigo-600;
 
   &:hover {
-    //color: $teal-900;
+    color: $indigo-700;
   }
 }
 
@@ -340,7 +340,7 @@ a {
   }
 
   .hero-header {
-    font-size: 60px;
+    font-size: 52px;
   }
 }
 
@@ -693,6 +693,7 @@ button {
   h6 {
     color: $indigo-800;
     font-weight: 700;
+    word-break: break-word;
   }
 
   & li {
@@ -745,7 +746,7 @@ button {
   }
 }
 
-// ToC
+// Table of Contents
 
 #toc-title {
   color: $white;
@@ -753,7 +754,7 @@ button {
 #toc div:first-child {
   display: inline-block;
 }
-#toc summary {
+#toc > div, #toc summary {
   padding: 0.3em 0;
 }
 #toc * {
