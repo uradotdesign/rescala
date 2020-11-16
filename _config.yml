@@ -27,6 +27,8 @@ plugins:
 collections:
   publications:
     output: false
+  news:
+    output: false
 
 exclude:
   - .sass-cache/

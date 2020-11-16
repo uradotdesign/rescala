@@ -101,9 +101,8 @@ title: Publications
         <div id="publications-container" class="row py-2">
             {% assign publications = site.publications | sort: 'date' | reverse %}
             {% for publication in publications  %}
-            <div class="col-lg-6 col-sm-12">
-                <article data-event-date="{{ publication.date }}">
-                    <div class="publication-card my-2 publications year-all all_types {{ publication.type }} year-{{ publication.date | date: '%Y' }}">
+            <div class="col-lg-6 col-sm-12 article my-2" data-event-date="{{ publication.date }}">
+                    <div class="publication-card h-100 d-flex flex-column publications year-all all_types {{ publication.type }} year-{{ publication.date | date: '%Y' }}">
                                 <p class="date mb-1">
                                     <i class="far fa-clock mr-1"></i>{{ publication.date | date: "%B %Y" }}
                                 </p>
@@ -114,34 +113,35 @@ title: Publications
                                 </a>
                                 <details class="abstract">
                                     <summary>
-                                        Abstract
+                                        <strong>Abstract</strong>
                                     </summary>
                                     <div class="mt-1">{{ publication.abstract }}</div>
                                 </details>
+                                <p class="mb-0">
                                 {% for collaborator in publication.collaborators %}
                                 <span class="collaborator">
                                     {{ collaborator }}{% if forloop.last %}{% else %},{% endif %}
                                 </span>
                                 {% endfor %}
-                                <p class="size-14 my-2">
-                                    {% if publication.pdf %}
-                                    <a href="{{ publication.pdf }}" class="pdf" target="_blank" rel="noopener">
-                                        <i class="fas fa-file-pdf"></i>
-                                        <span>PDF</span>
-                                    </a>
-                                    {% endif %}
-                                    {% if publication.slides %}
-                                    <a href="{{ publication.slides }}" class="pdf" target="_blank" rel="noopener">
-                                        <i class="fas fa-video"></i>
-                                        <span>Slides</span>
-                                    </a>
-                                    {% endif %}
+                            </p>
+                                <div class="mt-auto d-flex flex-row align-items-center">
+                                        {% if publication.pdf %}
+                                        <a href="{{ publication.pdf }}" class="pdf" target="_blank" rel="noopener">
+                                            <i class="fas fa-file-pdf"></i>
+                                            <span>PDF</span>
+                                        </a>
+                                        {% endif %}
+                                        {% if publication.slides %}
+                                        <a href="{{ publication.slides }}" class="pdf" target="_blank" rel="noopener">
+                                            <i class="fas fa-video"></i>
+                                            <span>Slides</span>
+                                        </a>
+                                        {% endif %}
                                     {% if publication.event %}
-                                    <span class="pill">{{ publication.event }}</span>
+                                    <span class="pill ml-auto my-2">{{ publication.event }}</span>
                                     {% endif %}
-                                </p>
+                                </div>
                     </div>
-                </article>
             </div>
             {% endfor %}
         </div>
@@ -189,7 +189,7 @@ window.updateCards = update;
 function order_alph() {
     
 var container = $("#publications-container");
-var items = $("article");
+var items = $(".article");
     
 items.each(function() {
        var BCDate = $(this).attr("data-event-date");
@@ -213,7 +213,7 @@ items.sort(function(a,b) {
     function order_asc() {
     
     var container = $("#publications-container");
-    var items = $("article");
+    var items = $(".article");
     
     items.each(function() {
        var BCDate = $(this).attr("data-event-date");
@@ -254,19 +254,6 @@ items.sort(function(a,b) {
         var currentYear = document.getElementsByClassName(" filtered");
         currentYear[0].className = currentYear[0].className.replace(" filtered", "");
         this.className += " filtered";
-      });
-    }
-</script>
-
-<script>
-    // Function to add selected class to the order filter
-    var sortContainer = document.getElementById("date-filter");
-    var sorts = sortContainer.getElementsByClassName("button-filter");
-    for (var j = 0; j < sorts.length; j++) {
-      sorts[j].addEventListener("click", function() {
-        var currentOrder = document.getElementsByClassName(" selected");
-        currentOrder[0].className = currentOrder[0].className.replace(" selected", "");
-        this.className += " selected";
       });
     }
 </script>

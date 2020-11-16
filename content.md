@@ -365,7 +365,7 @@ The `changed` conversion function creates an event from a signal.
 The function fires a new event every time a signal changes its value.
 
 <figure markdown="1">
-![Event-Signal](./event-signal.png)
+![Event-Signal](./assets/images/content/event-signal.png)
 <figcaption>Figure 1: Basic conversion functions.
 </figcaption>
 </figure>
