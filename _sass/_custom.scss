@@ -629,7 +629,6 @@ button {
   .news-card {
     background: $indigo-100;
     padding-top: 0 !important;
-    border: 1px solid $indigo-100;
     border-radius: 10px;
     box-sizing: border-box;
     transition: 0.25s ease-in-out;
@@ -693,7 +692,7 @@ button {
 
 .publication-card {
   padding: 20px;
-  background: $indigo-100;
+  background: rgba(235, 244, 255, 0.5);
   border-radius: 10px;
   box-sizing: border-box;
   transition: 0.25s ease-in-out;
@@ -744,6 +743,10 @@ button {
     background-color: $yellow-400;
     color: $gray-950;
   }
+}
+
+.publications {
+  display: none !important;
 }
 
 #date-filter,
@@ -873,14 +876,16 @@ button {
 #toc div:first-child {
   display: inline-block;
 }
-#toc > div, #toc summary, #toc details > div > div {
+#toc > div,
+#toc summary,
+#toc details > div > div {
   padding: 0.3em 0;
 }
 #toc * {
   color: $white !important;
 }
 details summary::-webkit-details-marker {
-  display:none;
+  display: none;
 }
 details > summary:first-of-type {
   list-style-type: none;
@@ -989,6 +994,22 @@ details > summary:first-of-type {
     cursor: pointer;
     background: $gray-100;
   }
+  .bordered {
+    border-radius: 10px 10px 0px 0px !important;
+  }
+  .publication-card .pdf {
+    margin-right: 0.5rem;
+    font-weight: 700;
+    color: $white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    background-color: $indigo-600;
+    text-decoration: none;
+  }
+  .publication-card .pill {
+    background-color: $yellow-500;
+  }
 }
 
 .wave-background {
@@ -1031,7 +1052,7 @@ details > summary:first-of-type {
 
 .visible {
   opacity: 1;
-  display: block;
+  display: block !important;
   -webkit-animation: fadeIn 0.65s ease forwards;
   animation: fadeIn 0.65s ease forwards;
 
