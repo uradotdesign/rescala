@@ -929,7 +929,7 @@ details > summary:first-of-type {
   }
 
   &-manual {
-    background: $indigo-700;
+    background: linear-gradient(90deg, $indigo-700 50%, $white 50%);
   }
 
   &-radial {

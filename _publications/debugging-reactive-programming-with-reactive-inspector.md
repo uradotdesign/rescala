@@ -10,6 +10,6 @@ collaborators:
   - Mira Mezini
 pdf: "https://google.com"
 slides: "https://google.com"
-event: "Poster, ICSE 2016"
+event: "ICSE 2016"
 link: "https://dl.acm.org/citation.cfm?id=2893174"
 ---

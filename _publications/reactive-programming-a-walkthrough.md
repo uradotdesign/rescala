@@ -9,6 +9,6 @@ collaborators:
   - Giordano Tamburrelli
 pdf: "https://google.com"
 slides: "https://google.com"
-event: "ICSE Technical Briefing. ICSE 2015"
+event: "ICSE 2015"
 link: "http://ieeexplore.ieee.org/document/7203125/"
 ---

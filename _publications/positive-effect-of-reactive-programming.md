@@ -11,6 +11,6 @@ collaborators:
   - Mira Mezini
 pdf: "https://google.com"
 slides: "https://google.com"
-event: "IEEE Transactions on Software Engineering 2017"
+event: "IEEE 2017"
 link: "http://ieeexplore.ieee.org/document/7827078/"
 ---

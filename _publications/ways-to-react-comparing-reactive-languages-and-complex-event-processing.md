@@ -7,6 +7,6 @@ collaborators:
   - Alessandro Margara
   - Guido Salvaneschi
 pdf: "http://www.guidosalvaneschi.com/attachments/papers/2013_Ways-to-React-Comparing-Reactive-Languages-and-Complex-Event-Processing_pdf.pdf"
-event: "SPLASH Workshop: Reactivity, Events and Modularity, 2013"
+event: "SPLASH 2013"
 link: "http://www.guidosalvaneschi.com/attachments/papers/2013_Ways-to-React-Comparing-Reactive-Languages-and-Complex-Event-Processing_pdf.pdf"
 ---
