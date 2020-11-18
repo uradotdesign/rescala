@@ -8,6 +8,6 @@ collaborators:
   - Mira Mezini
 pdf: "https://google.com"
 slides: "https://google.com"
-event: "MODULARITY AOSD 2013"
+event: "MODULARITY 2013"
 link: "https://dl.acm.org/citation.cfm?id=2451442"
 ---

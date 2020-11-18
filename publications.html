@@ -20,7 +20,7 @@ title: Publications
 <div class="container-fluid">
   <div class="container py-3">
     <div class="row justify-content-between py-2">
-      <div class="col-12 col-lg-6 py-2">
+      <div class="col-12 col-lg-6 col-md-6 py-2">
         <div id="publication-filter">
           <div class="dropdown">
             <button
@@ -38,7 +38,7 @@ title: Publications
               {% assign types = types | concat: type %}
               {% endfor %}
               <button
-                class="dropdown-item button-filter mr-3 mb-2 mb-sm-1"
+                class="dropdown-item button-filter categorized mr-3 mb-2 mb-sm-1"
                 onclick="changeType('all_types')"
               >
                 All
@@ -87,7 +87,7 @@ title: Publications
           </div>
         </div>
       </div>
-      <div class="col-12 col-lg-6 py-2 d-flex justify-content-lg-end">
+      <div class="col-12 col-lg-6 col-md-6 py-2 d-flex justify-content-lg-end">
         <div>
           <div id="date-filter">
             <button
@@ -166,7 +166,7 @@ title: Publications
             </summary>
             <div class="mt-1">{{ publication.abstract }}</div>
           </details>
-          <p class="mb-0">
+          <p class="mb-0 collaborators">
             {% for collaborator in publication.collaborators %}
             <span class="collaborator">
               {{ collaborator }}{% if forloop.last %}{% else %},{% endif %}
@@ -299,9 +299,9 @@ title: Publications
   var btns = btnContainer.getElementsByClassName("button-filter");
   for (var i = 0; i < btns.length; i++) {
     btns[i].addEventListener("click", function () {
-      var current = document.getElementsByClassName("active");
-      current[0].className = current[0].className.replace(" active", "");
-      this.className += " active";
+      var current = document.getElementsByClassName(" categorized");
+      current[0].className = current[0].className.replace(" categorized", "");
+      this.className += " categorized";
     });
   }
 </script>

@@ -10,6 +10,6 @@ collaborators:
   - Jacques Noye
 pdf: "https://google.com"
 slides: "https://google.com"
-event: "MODULARITY AOSD 2014"
+event: "MODULARITY 2014"
 link: "https://dl.acm.org/citation.cfm?id=2577082"
 ---

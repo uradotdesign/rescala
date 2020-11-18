@@ -27,7 +27,7 @@ plugins:
 collections:
   publications:
     output: false
-  news:
+  showcases:
     output: false
 
 exclude:

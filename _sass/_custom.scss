@@ -59,7 +59,7 @@ body {
   height: 68px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .navbar-collapse > .navbar-nav > .nav-item > .nav-link {
     font-weight: bold;
     font-family: "Barlow", sans-serif;
@@ -451,11 +451,7 @@ button {
   background: transparent;
   outline: none !important;
 
-  &.active {
-    color: $yellow-700 !important;
-  }
-
-  &.selected {
+  &.categorized {
     color: $yellow-700 !important;
   }
 
@@ -525,7 +521,7 @@ button {
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .action {
     color: $white;
     background: $indigo-600;
@@ -625,12 +621,13 @@ button {
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .news-card {
     background: $indigo-100;
     padding-top: 0 !important;
     border-radius: 10px;
     box-sizing: border-box;
+    border: 1px solid transparent;
     transition: 0.25s ease-in-out;
     -webkit-transition: 0.25s ease-in-out;
     -moz-transition: 0.25s ease-in-out;
@@ -730,6 +727,11 @@ button {
     color: $indigo-800;
   }
 
+  & .collaborators {
+    line-height: normal;
+    line-height: normal;
+  }
+
   & .pdf {
     margin-right: 0.5rem;
     font-weight: 700;
@@ -745,6 +747,26 @@ button {
   }
 }
 
+.abstract > summary {
+  padding: 5px 0;
+}
+
+.abstract > summary::before {
+    content: "\f0fe";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    color: $indigo-700;
+    position: relative;
+    margin-right: 5px;
+}
+
+.abstract[open] > summary::before {
+  content: "\f146";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 700;
+  color: $indigo-700;
+}
+
 .publications {
   display: none !important;
 }
@@ -755,7 +777,7 @@ button {
   display: inline-block;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   #publication-filter > .button-filter,
   #date-filter > .button-filter,
   #year-filter > .button-filter {
@@ -965,7 +987,7 @@ details > summary:first-of-type {
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .background-manual {
     background: $white;
   }
@@ -1018,7 +1040,7 @@ details > summary:first-of-type {
   background-size: cover;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .wave-background {
     background-image: none;
     background-color: $indigo-100;
